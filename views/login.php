@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="public/css/public-b6bf74bc.css">
             </head>
     <body>
+        
         <div class="container">
             <nav id="main-nav" class="navbar navbar-default">
     <div class="container-fluid">
@@ -19,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://garden.borina.ro/puzzle">Gradina Puzzle</a>
+            <a class="navbar-brand" href="Home">Gradina Puzzle</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,7 +29,7 @@
                 <li class=""><a href="http://garden.borina.ro/despre">Despre Noi</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="http://garden.borina.ro/auth/login">Login</a></li>
+                                    <li><a href="Login">Login</a></li>
                             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -40,12 +41,12 @@
 
     <div class="form-group">
         <label for="login-email"> Email </label>
-        <input type="email" name="email" value="" class="form-control" id="login-email">
+        <input type="email" name="login-email" value="" class="form-control" id="login-email">
     </div>
 
     <div>
         <label for="login-password"> Parolă </label>
-        <input type="password" name="password" id="login-password" class="form-control">
+        <input type="password" name="login-password" id="login-password" class="form-control">
     </div>
 
     <div class="checkbox">
@@ -59,26 +60,26 @@
     </div>
 </form>    </div>
     <div class="col-md-6">
-        <form method="POST" action="/auth/register">
-    <input type="hidden" name="_token" value="6sQwHFaCuFdndh4TcgkdckH5BIewOpJ6Ml3BYoOQ">
+        <form method="POST" action="Register">
+    
 
     <div class="form-group">
-        <label for="register-firstname">Name mic</label>
-        <input type="text" name="firstname" value="" id="register-firstname" class="form-control">
+        <label for="firstname">Name mic</label>
+        <input type="text" name="firstname" value="" id="firstname" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="register-lastname">Name de familie</label>
-        <input type="text" name="lastname" value="" id="register-lastname" class="form-control">
+        <label for="lastname">Name de familie</label>
+        <input type="text" name="lastname" value="" id="lastname" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="register-email"> Email </label>
+        <label for="email"> Email </label>
         <input type="email" name="email" value="" autocomplete="off" class="form-control" id="register-email">
     </div>
 
     <div class="form-group">
-        <label for="register-password"> Parolă </label>
+        <label for="password"> Parolă </label>
         <input type="password" name="password" autocomplete="off" id="register-password" class="form-control">
     </div>
 

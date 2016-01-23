@@ -1,0 +1,311 @@
+//** Modal backdrop opacity
+$modal-backdrop-opacity: .29 !default;
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "helpers/backdrop";
+@import "helpers/icons";
+@import "animations/rotate";
+@import "animations/mixin";
+$gardenZIndex: 1;
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: $gardenZIndex + 2;
+}
+#garden-background {
+    background-image: url('../img/fundal.jpg');
+    background-color: #C9B8A8;
+    box-shadow: inset 0 0 150px 30px rgba(0,0,0,0.4);
+    position: fixed;
+    top: $navbar-height;
+    left: 0;
+    right: 0;
+    bottom:0;
+    z-index: $gardenZIndex;
+
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+#garden-container {
+    background: transparent;
+    position: fixed;
+    top: $navbar-height;
+    left: 0;
+    right: 400px;
+    bottom:0;
+    z-index: $gardenZIndex;
+
+    svg {
+        width: 100%;
+        height: 100%;
+
+        path {
+            &.selected.outline{
+            }
+            &.perimeter{
+                fill:transparent;
+                &.selected, &:hover {
+                    stroke: #fff;
+                    stroke-width: 1px;
+                    stroke-dasharray: 15,10;
+                    fill: rgba(255, 255, 255, 0.11);
+                }
+            }
+        }
+    }
+
+    .drag-point {
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.5);
+        text-align: center;
+
+        z-index: 2;
+
+        &.round {
+            background-color: rgba(255, 255, 0, 0.5);
+        }
+
+        &.temp {
+            z-index: 1;
+            cursor: crosshair;
+        }
+    }
+
+    .entity {
+        &:hover, &.selected {
+            outline: 1px dashed #fff;
+            background: rgba(255, 255, 255, 0.11);
+        }
+    }
+}
+
+#garden-price{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: $gardenZIndex + 2;
+
+    .details-container {
+        @include backdrop;
+        overflow: auto;
+
+        .details-content {
+            @extend .container;
+
+            background: #fff;
+
+            min-height: 100%;
+
+            .details-grid {
+                width: 100%;
+
+                .template {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+#center-stage-backdrop {
+    @extend .modal-backdrop;
+    @include opacity($modal-backdrop-opacity);
+    display: none;
+}
+
+#garden-toolbox {
+    position: fixed;
+    top: $navbar-height;
+    right: 0;
+    max-width: 400px;
+    z-index: $gardenZIndex + 1;
+    height: 100%;
+    border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0)) 1 100%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000;
+    border-top: none;
+    border-right: none;
+    padding-left: 10px;
+
+    > .toggle-contents {
+        display: none;
+    }
+
+    .entity {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+
+        background-image: url("../img/fundal-categorie-100px.png");
+        background-repeat: no-repeat;
+
+        z-index: $zindex-modal-background + 1;
+
+        .project-price {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            line-height: 0px;
+            color: #fff;
+            .letter {
+                height: 50%;
+                position: absolute;
+                width: 20px;
+                left: 54px;
+                top: 0;
+                transform-origin: bottom center;
+            }
+        }
+
+        .details {
+            display: none;
+        }
+
+        &:hover .details {
+            display: block;
+            position: absolute;
+            top: -100%;
+            left: 100%;
+            background: #fff;
+            line-height: 28px;
+            padding: 22px;
+            BORDER-RADIUS: 5%;
+            box-shadow: 7px 8px 9px rgba(0, 0, 0, 0.75);
+
+            .categories {
+                text-align: right;
+                font-size: 22px;
+
+                .icon-category {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $screen-md) {
+        max-width: 200px;
+    }
+}
+
+#module-categories {
+    > ul {
+        @include clearfix;
+        padding: 0;
+        position: relative;
+
+        > li {
+            display: block;
+            float:left;
+            width: 40%;
+            margin-right: 5%;
+
+            @media screen and (max-width: $screen-md) {
+                width: 90%;
+            }
+
+            a, button, .icon {
+                color: #fff;
+                background: transparent;
+                border: none;
+                font-size: 18px;
+                margin: 0;
+                padding: 0;
+                font-weight: bold;
+            }
+
+            .icon-category {
+                float: right;
+            }
+
+            .subcategories {
+                display: none;
+            }
+
+            > ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+
+                padding: 0;
+
+                li {
+                    display: inline-block;
+                    width: 150px;
+                    height: 150px;
+                    line-height: 150px;
+                    vertical-align: baseline;
+                    text-align: center;
+                    background-image: url("../img/fundal-categorie-150px.png");
+
+                    &.center-stage {
+                        z-index: $zindex-modal-background + 1;
+                    }
+
+                    &.loading {
+                        background-image: none;
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1;
+                            background: url("../img/fundal-categorie-150px.png") no-repeat;
+
+                            @include animation("rotate 1s infinite");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#garden-zoom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: $gardenZIndex + 1;
+}
+#garden-select {
+    position: absolute;
+    z-index: $gardenZIndex + 5;
+
+    button {
+        width: 40px;
+        height: 40px;
+        line-height: 28px;
+        font-size: 28px;
+
+        border-radius: 50%;
+
+        background-color: #fff;
+        border: none;
+
+        position: absolute;
+    }
+}
+
+#gridPattern {
+    .path10cm {
+        stroke: #817469;
+        stroke-width:1px;
+    }
+
+    .rect1m {
+        stroke: #72655b;
+        stroke-width:1px;
+        fill: transparent;
+    }
+}

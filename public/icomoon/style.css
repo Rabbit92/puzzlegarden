@@ -1,0 +1,81 @@
+@font-face {
+	font-family: 'icomoon';
+	src: url('fonts/icomoon.eot?v83609');
+	src: url('fonts/icomoon.eot?v83609#iefix') format('embedded-opentype'),
+	url('fonts/icomoon.ttf?v83609') format('truetype'),
+	url('fonts/icomoon.woff?v83609') format('woff'),
+	url('fonts/icomoon.svg?v83609#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-coltrotund:before {
+	content: "\e900";
+}
+
+.icon-soarelumina:before {
+	content: "\e901";
+}
+
+.icon-soaresemiumbra:before {
+	content: "\e902";
+}
+
+.icon-soareumbra:before {
+	content: "\e903";
+}
+
+.icon-foioase:before {
+	content: "\e904";
+}
+
+.icon-graminee:before {
+	content: "\e905";
+}
+
+.icon-morcov:before {
+	content: "\e906";
+}
+
+.icon-cossupermarket:before {
+	content: "\e907";
+}
+
+.icon-puzzle:before {
+	content: "\e908";
+}
+
+.icon-rotate:before {
+	content: "\e90a";
+}
+
+.icon-move:before {
+	content: "\e913";
+}
+
+.icon-bin:before {
+	content: "\e918";
+}
+
+.icon-menu:before {
+	content: "\e91c";
+}
+
+.icon-conifer:before {
+	content: "\f1bb";
+}
+
